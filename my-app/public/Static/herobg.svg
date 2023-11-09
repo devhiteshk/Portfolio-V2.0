@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<svg width="725px" height="990px" viewBox="0 0 725 990" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient gradientUnits="objectBoundingBox" x1="0.42447266" y1="-0.004009545" x2="1.0024675" y2="0.77775156" id="gradient_1">
+      <stop offset="0%" stop-color="#AD58E9" />
+      <stop offset="100%" stop-color="#4961DC" />
+    </linearGradient>
+    <path d="M725 0L725 0L725 990L0 990L0 0L725 0Z" id="path_1" />
+    <clipPath id="clip_1">
+      <use xlink:href="#path_1" />
+    </clipPath>
+  </defs>
+  <g id="download" clip-path="url(#clip_1)">
+    <path d="M725 0L725 0L725 990L0 990L0 0L725 0Z" id="download" fill="none" stroke="none" />
+    <path d="M636.76 -432.593L647.366 -443.2C650.295 -446.129 653.831 -447.593 657.973 -447.593C662.115 -447.593 665.651 -446.129 668.58 -443.2L1545.41 433.634C1548.34 436.562 1549.81 440.098 1549.81 444.24C1549.81 448.382 1548.34 451.918 1545.41 454.847L902.653 1097.61C899.724 1100.54 896.189 1102 892.046 1102C887.904 1102 884.369 1100.54 881.44 1097.61L4.60635 220.773C1.67748 217.844 0.213005 214.309 0.212982 210.167C0.213021 206.024 1.67749 202.489 4.60638 199.56L636.76 -432.593Z" id="Rectangle" fill="url(#gradient_1)" fill-rule="evenodd" stroke="none" />
+  </g>
+</svg>

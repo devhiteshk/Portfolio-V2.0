@@ -1,6 +1,42 @@
-*{
+* {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  
+
+}
+
+@keyframes Changing-Hero-BG {
+  0% {
+    background-image: radial-gradient(#444cf7 0.5px, transparent 0.5px), radial-gradient(#444cf7 0.5px, #e5e5f7 0.5px);
+  }
+
+  20% {
+    background-image: radial-gradient(#aa52ff 0.5px, transparent 0.5px), radial-gradient(#aa52ff 0.5px, #e5e5f7 0.5px);
+  }
+
+  40% {
+    background-image: radial-gradient(#F875AA 0.5px, transparent 0.5px), radial-gradient(#F875AA 0.5px, #e5e5f7 0.5px);
+  }
+
+  60% {
+    background-image: radial-gradient(#ff52f4 0.5px, transparent 0.5px), radial-gradient(#ff52f4 0.5px, #e5e5f7 0.5px);
+  }
+
+  80% {
+    background-image: radial-gradient(#ff52a5 0.5px, transparent 0.5px), radial-gradient(#ff52a5 0.5px, #e5e5f7 0.5px);
+  }
+
+  100% {
+    background-image: radial-gradient(#ff5252 0.5px, transparent 0.5px), radial-gradient(#ff5252 0.5px, #e5e5f7 0.5px);
+  }
+}
+
+
+.Hero-Section {
+  background-color: #e5e5f7;
+  opacity: 0.8;
+  background-image: radial-gradient(#6365ff 0.5px, transparent 0.5px), radial-gradient(#6365ff 0.5px, #e5e5f7 0.5px);
+  background-size: 20px 20px;
+  background-position: 0 0, 10px 10px;
+  animation: Changing-Hero-BG 5s infinite ease-in-out;
 }
