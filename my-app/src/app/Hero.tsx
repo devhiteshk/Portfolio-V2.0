@@ -1,3 +1,5 @@
+"use client";
+
 import { Box, Button, Paper, Typography } from "@mui/material";
 import Image from "next/image";
 import React from "react";
@@ -12,6 +14,20 @@ const flex = {
 };
 
 function Hero(): JSX.Element {
+  const toggleActive = (e: any) => {
+    const myTO = setTimeout(() => {
+      toggleActive(e);
+    }, 140);
+
+    let element: any = document.getElementById(e.target.id);
+    if (element.classList.contains("colorAnimation")) {
+      element.classList.remove("colorAnimation");
+      clearTimeout(myTO);
+    } else {
+      element?.classList.add("colorAnimation");
+    }
+  };
+
   return (
     <Box
       sx={{
@@ -25,6 +41,7 @@ function Hero(): JSX.Element {
         elevation={1}
         sx={{
           position: "fixed",
+          zIndex: 9,
           borderRadius: 0,
           top: 0,
           width: "100%",
@@ -52,11 +69,14 @@ function Hero(): JSX.Element {
                 width={40}
               ></Image>
             </Box>
-            <Box sx={{ display: "flex", gap: 7 }}>
+            <Box sx={{ display: { xs: "flex", md: "none" } }}>
+              <SwipeableTemporaryDrawer />
+            </Box>
+            <Box sx={{ display: { xs: "none", md: "flex" }, gap: 7 }}>
               <Typography
                 sx={{ cursor: "pointer", ":hover": { color: "#000" } }}
                 fontWeight={400}
-                variant="caption"
+                variant="body2"
                 color="#6A98F0"
               >
                 Home
@@ -64,7 +84,7 @@ function Hero(): JSX.Element {
               <Typography
                 sx={{ cursor: "pointer", ":hover": { color: "#000" } }}
                 fontWeight={400}
-                variant="caption"
+                variant="body2"
                 color="#6A98F0"
               >
                 About Me
@@ -72,7 +92,7 @@ function Hero(): JSX.Element {
               <Typography
                 sx={{ cursor: "pointer", ":hover": { color: "#000" } }}
                 fontWeight={400}
-                variant="caption"
+                variant="body2"
                 color="#6A98F0"
               >
                 Journey
@@ -80,7 +100,7 @@ function Hero(): JSX.Element {
               <Typography
                 sx={{ cursor: "pointer", ":hover": { color: "#000" } }}
                 fontWeight={400}
-                variant="caption"
+                variant="body2"
                 color="#6A98F0"
               >
                 Projects
@@ -88,7 +108,7 @@ function Hero(): JSX.Element {
               <Typography
                 sx={{ cursor: "pointer", ":hover": { color: "#000" } }}
                 fontWeight={400}
-                variant="caption"
+                variant="body2"
                 color="#6A98F0"
               >
                 Contact
@@ -96,7 +116,7 @@ function Hero(): JSX.Element {
               <Typography
                 sx={{ cursor: "pointer", ":hover": { color: "#000" } }}
                 fontWeight={400}
-                variant="caption"
+                variant="body2"
                 color="#6A98F0"
               >
                 Blog
@@ -105,8 +125,25 @@ function Hero(): JSX.Element {
           </Box>
         </Box>
       </Paper>
-      <Box>
-        <img width={800} src={bg} alt="awesome bg image" />
+      <Box
+        sx={{
+          width: "40%",
+          height: "100vh",
+          position: "absolute",
+          top: 0,
+          right: 0,
+          zIndex: -1,
+        }}
+      >
+        <Box
+          sx={{
+            backgroundImage: `url(${"https://raw.githubusercontent.com/devhiteshk/Portfolio-V2.0/d2ceaf54e4085330cdf9e549b60dd2769303b697/my-app/public/Static/herobg.svg"})`,
+            backgroundRepeat: "no-repeat",
+            backgroundSize: "cover",
+            width: "100%",
+            height: "100%",
+          }}
+        ></Box>
       </Box>
       <Box
         sx={{
@@ -119,21 +156,23 @@ function Hero(): JSX.Element {
         <Box
           sx={{
             minHeight: "100vh",
+            flexDirection: { xs: "column", md: "row" },
             height: "100%",
             width: "100%",
             maxWidth: "lg",
             display: "flex",
-            justifyContent: "center",
+            justifyContent: { xs: "space-evenly", md: "space-between" },
             alignItems: "center",
             px: 3,
           }}
           pb={"50px"}
+          pt={"50px"}
         >
           <Box
             sx={{
               display: "flex",
               flexDirection: "column",
-              width: "60%",
+              //   width: { xs: "100%", md: "60%" },
             }}
           >
             <Typography
@@ -141,7 +180,7 @@ function Hero(): JSX.Element {
               fontFamily={"Montserrat, sans-serif"}
               variant="body1"
               fontWeight={300}
-              color="initial"
+              color="rgb(56, 56, 56)"
             >
               Hello, {"I'm"}
             </Typography>
@@ -149,7 +188,7 @@ function Hero(): JSX.Element {
               variant="h2"
               fontWeight={"bold"}
               fontFamily={"Montserrat, sans-serif"}
-              color="initial"
+              color="#000"
               //   sx={{
               //     backgroundcolor: "primary",
               //     backgroundImage: `linear-gradient(90deg, rgba(96,174,247,1) 0%, rgba(0,24,150,1) 100%)`,
@@ -166,7 +205,7 @@ function Hero(): JSX.Element {
               pl={0.4}
               variant="body1"
               fontFamily={"Montserrat, sans-serif"}
-              color="initial"
+              color="rgb(56, 56, 56)"
               fontSize={18}
               fontWeight={300}
             >
@@ -178,8 +217,8 @@ function Hero(): JSX.Element {
                 sx={{
                   fontFamily: "Montserrat, sans-serif",
                   textTransform: "capitalize",
-                  fontWeight: 100,
-                  fontSize: 12,
+                  fontWeight: 400,
+                  fontSize: 13,
                   ml: 0.3,
                   backgroundcolor: "primary",
                   backgroundImage: `linear-gradient(134deg, rgb(106, 152, 240) 0%, rgb(73, 97, 220) 99%);`,
@@ -196,7 +235,114 @@ function Hero(): JSX.Element {
               </Button>
             </Box>
           </Box>
-          <Box sx={{ width: "40%" }}>Hello</Box>
+          <Box py={2}>
+            <Box
+              sx={{
+                display: "flex",
+                flexDirection: "column",
+                justifyContent: { xs: "center", md: "flex-end" },
+                position: "relative",
+              }}
+            >
+              <Paper elevation={3} sx={{ px: 1, py: { xs: 2, md: 5 } }}>
+                <Box
+                  sx={{
+                    minWidth: { xs: "100%", md: "100%" },
+                    fontSize: { xs: "12px", md: "16px" },
+                  }}
+                >
+                  <MyCoolCodeBlock />
+                </Box>
+              </Paper>
+              <Box
+                sx={{
+                  position: { xs: "absolute", md: "absolute" },
+                  left: { xs: -20, md: -60 },
+                  bottom: { xs: -50, md: -40 },
+                  //   maxWidth: "264px",
+                }}
+              >
+                <Paper
+                  sx={{
+                    p: 1,
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "left",
+                    gap: 1,
+                    flexWrap: "wrap",
+                  }}
+                >
+                  <Box
+                    onClick={(e) => toggleActive(e)}
+                    id="B1"
+                    sx={{
+                      width: 40,
+                      height: 40,
+                      background:
+                        "linear-gradient(90deg, rgba(68,165,230,1) 0%, rgba(116,54,199,1) 100%)",
+                      borderRadius: "10px",
+                      cursor: "pointer",
+                      m: "1.5px",
+                      "&:hover": { width: 43, height: 43, m: "0px" },
+                    }}
+                  ></Box>
+                  <Box
+                    onClick={(e) => toggleActive(e)}
+                    id="B2"
+                    sx={{
+                      width: 40,
+                      height: 40,
+                      background:
+                        "linear-gradient(134deg, rgb(106, 152, 240) 0%, rgb(73, 97, 220) 99%)",
+                      borderRadius: "10px",
+                      cursor: "pointer",
+                      m: "1.5px",
+                      "&:hover": { width: 43, height: 43, m: "0px" },
+                    }}
+                  ></Box>
+                  <Box
+                    onClick={(e) => toggleActive(e)}
+                    id="B3"
+                    sx={{
+                      width: 40,
+                      height: 40,
+                      background: "#6D83F2",
+                      borderRadius: "10px",
+                      cursor: "pointer",
+                      m: "1.5px",
+                      "&:hover": { width: 43, height: 43, m: "0px" },
+                    }}
+                  ></Box>
+                  <Box
+                    onClick={(e) => toggleActive(e)}
+                    id="B4"
+                    sx={{
+                      width: 40,
+                      height: 40,
+                      background: "#000",
+                      borderRadius: "10px",
+                      cursor: "pointer",
+                      m: "1.5px",
+                      "&:hover": { width: 43, height: 43, m: "0px" },
+                    }}
+                  ></Box>
+                  <Box
+                    onClick={(e) => toggleActive(e)}
+                    id="B5"
+                    sx={{
+                      width: 40,
+                      height: 40,
+                      background: "#6A98F0",
+                      borderRadius: "10px",
+                      cursor: "pointer",
+                      m: "1.5px",
+                      "&:hover": { width: 43, height: 43, m: "0px" },
+                    }}
+                  ></Box>
+                </Paper>
+              </Box>
+            </Box>
+          </Box>
         </Box>
       </Box>
     </Box>
@@ -204,3 +350,27 @@ function Hero(): JSX.Element {
 }
 
 export default Hero;
+
+import { CodeBlock, tomorrow } from "react-code-blocks";
+import { Scale } from "@mui/icons-material";
+import SwipeableTemporaryDrawer from "./components/Drawer";
+
+const text = `class Person {
+    constructor( ) {
+        this.name = "Hitesh Kumar";
+        this.triats = [ "Code", "Manage" ];
+        this.age = newDate( ).getFullYear( ) - 1998;
+    }
+}`;
+
+function MyCoolCodeBlock() {
+  return (
+    <CodeBlock
+      text={text}
+      language={"javascript"}
+      showLineNumbers={false}
+      wrapLongLines={true}
+      theme={tomorrow}
+    />
+  );
+}

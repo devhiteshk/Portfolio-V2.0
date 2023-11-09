@@ -40,3 +40,8 @@
   background-position: 0 0, 10px 10px;
   animation: Changing-Hero-BG 5s infinite ease-in-out;
 }
+
+.colorAnimation {
+  transform: scale(0.7);
+  transition: all 0.1s ease 0s;
+}
